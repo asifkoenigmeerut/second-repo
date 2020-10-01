@@ -1,0 +1,12 @@
+centos3
+centos1
+
+[Dubai]
+centos1
+
+[Saudi]
+centos3
+
+[UAE:children]
+Saudi
+Dubai

@@ -1,0 +1,28 @@
+---
+- name: install apache server
+  hosts: all
+  serial: 1
+  tasks:
+  - name: install apache
+    yum:
+     name: httpd
+     state: present
+  - name: create a file
+    copy:
+     dest: /var/www/html/index.html
+     content: "hello world"
+
+
+
+  - name: start service
+    service: 
+     name: httpd
+     enabled: yes
+     state: restarted
+
+  - name: add into firewalld
+    firewalld:
+     service: http
+     immediate: yes
+     permanent: true
+     state: enabled

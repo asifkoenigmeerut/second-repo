@@ -1,0 +1,21 @@
+---
+- name: create multiple users
+  hosts: all
+  vars_files: vars/var.yml
+  tasks: 
+  - name: users management
+    user:
+     name: "{{ item }}"
+     state: present
+    loop: "{{ usr }}"
+  - name: package
+    yum:
+     name:  "{{ item }}"
+     state: present
+    loop: "{{ pkg }}"
+
+  - name: 
+    service:
+     name: "{{ item }}"
+     state: restarted
+    loop: "{{ svc }}"
